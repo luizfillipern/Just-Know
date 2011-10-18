@@ -1,4 +1,8 @@
 Justknow::Application.routes.draw do
+  resources :comments
+
+  resources :articles
+
   get "home/index"
 
   get "logout" => "sessions#destroy", :as => "logout"

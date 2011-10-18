@@ -1,0 +1,38 @@
+<div id="content">
+
+	<div id="blog" class="container">
+
+		<div class="page-header clearfix">
+
+			<h1 class="page-title">The Blog</h1>
+
+			<div id="search-form" class="search">
+				<input type="text" value="" placeholder="Search the blog" class="placeholder">
+				<input type="submit" value="Go">
+			</div><!-- end #search-form -->
+						
+		</div><!-- end .page-header -->
+
+		<ul class="blog-posts">
+            <% @articles.each do |article| %>
+  <%=render article%>
+<% end %>		
+
+		</ul>
+
+		<hr>
+
+		<div class="center-pagination">
+
+			<ul class="pagination">
+				<li class="prev"><span class="disabled">«</span></li>	
+				<li><span><em>page</em> 1 <em>of</em> 17</span></li>		
+				<li class="next"><a href="#">»</a></li>						
+			</ul>
+
+		</div>
+
+	</div><!-- end #blog -->
+
+</div>
+<%= link_to 'New Article', new_article_path %>
