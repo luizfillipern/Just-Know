@@ -1,27 +1,76 @@
-<h1>Sign Up</h1>
+<div class="container">
+  <div class="two-third">
+    <div class="page-header clearfix">
 
-<%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+      <h1 class="page-title">Get in Touch</h1>
+
+      <div id="search-form" class="search">
+        <input type="text" value="" placeholder="Search the blog" class="placeholder">
+        <input type="submit" value="Go">
+      </div><!-- end #search-form -->
+
+    </div>
+
+    <h2>Crie uma nova conta</h2>
+    <h6 class="required">* required</h6>
+
+
+
+    <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+            <div class="error_messages">
+              <h2>Form is invalid</h2>
+              <ul>
+                <% for message in @user.errors.full_messages %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+
+        <div id="comment-form" class="form">
+
+          <p class="input-block">
+            <label for="name">Name*</label>
+            <input type="text" value="" name="name" id="name">
+          </p>
+
+          <p class="input-block">
+            <label for="email">Email*</label>
+            <input type="text" value="" name="email" id="email">
+          </p>
+
+          <p class="input-block long">
+            <label for="url">Website</label>
+            <input type="text" value="" name="url" id="url" placeholder="http://" class="placeholder">
+          </p>
+
+          <p class="textarea-block">
+            <label for="comment">Comments*</label>
+            <textarea name="comment" id="comment" cols="70" rows="10"></textarea>
+          </p>
+
+          <div class="clear"></div>
+
+          <input type="submit" name="submit" value="Submit">
+
+        </div><!-- end #comment-form -->
+
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
         </div>
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <div class="actions"><%= f.submit %></div>
     <% end %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-    <div class="actions"><%= f.submit %></div>
-<% end %>
+
+  </div>
+</div>
