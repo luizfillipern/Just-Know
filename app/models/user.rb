@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
     
     has_many :articles
     has_many :comments
+    has_many :ratings
+    
   attr_accessible :email, :password, :password_confirmation
 
   validates_confirmation_of :password

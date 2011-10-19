@@ -1,7 +1,12 @@
 Justknow::Application.routes.draw do
-  resources :comments
+  resources :ratings
 
-  resources :articles
+  resources :categories
+
+
+  resources :articles do
+    resources :comments
+  end
 
   get "home/index"
 
