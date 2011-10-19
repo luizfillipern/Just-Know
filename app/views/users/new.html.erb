@@ -1,27 +1,54 @@
-<h1>Sign Up</h1>
+<div class="container">
+    <div class="page-header clearfix">
 
-<%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+      <h1 class="page-title">Crie sua conta</h1>
+
+    </div>
+
+  <div class="two-third">
+
+  <h6 class="required">* camopos obrigatórios</h6>
+
+
+
+    <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+            <div class="error_messages">
+              <h2>Form is invalid</h2>
+              <ul>
+                <% for message in @user.errors.full_messages %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+
+        <div class="form">
+
+          <p class="input-block">
+            <%=f.label :name, "Nome*"%>
+            <%=f.text_field :name%>
+          </p>
+
+          <p class="input-block">
+            <%=f.label :email, "Email*"%>
+            <%=f.text_field :email%>
+          </p>
+
+          <p class="input-block">
+            <%=f.label :password, "Senha*"%>
+            <%=f.password_field :password%>
+          </p>
+
+          <div class="clear"></div>
+
+          <%= f.submit "Criar Conta" %>
+
+        </div><!-- end #comment-form -->
+
+
     <% end %>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-    <div class="actions"><%= f.submit %></div>
-<% end %>
+
+  </div>
+</div>

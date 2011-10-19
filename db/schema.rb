@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20111019183641) do
+=======
+ActiveRecord::Schema.define(:version => 20111019234909) do
+>>>>>>> 5ca8ba15a0b1f5086cc8558d4a421a9bd1bae913
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -58,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20111019183641) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "name"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
