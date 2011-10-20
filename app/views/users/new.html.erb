@@ -1,18 +1,13 @@
 <div class="container">
-  <div class="two-third">
     <div class="page-header clearfix">
 
-      <h1 class="page-title">Get in Touch</h1>
-
-      <div id="search-form" class="search">
-        <input type="text" value="" placeholder="Search the blog" class="placeholder">
-        <input type="submit" value="Go">
-      </div><!-- end #search-form -->
+      <h1 class="page-title">Crie sua conta</h1>
 
     </div>
 
-    <h2>Crie uma nova conta</h2>
-    <h6 class="required">* required</h6>
+  <div class="two-third">
+
+  <h6 class="required">* camopos obrigatórios</h6>
 
 
 
@@ -29,47 +24,30 @@
         <% end %>
 
 
-        <div id="comment-form" class="form">
+        <div class="form">
 
           <p class="input-block">
-            <label for="name">Name*</label>
-            <input type="text" value="" name="name" id="name">
+            <%=f.label :name, "Nome*"%>
+            <%=f.text_field :name%>
           </p>
 
           <p class="input-block">
-            <label for="email">Email*</label>
-            <input type="text" value="" name="email" id="email">
+            <%=f.label :email, "Email*"%>
+            <%=f.text_field :email%>
           </p>
 
-          <p class="input-block long">
-            <label for="url">Website</label>
-            <input type="text" value="" name="url" id="url" placeholder="http://" class="placeholder">
-          </p>
-
-          <p class="textarea-block">
-            <label for="comment">Comments*</label>
-            <textarea name="comment" id="comment" cols="70" rows="10"></textarea>
+          <p class="input-block">
+            <%=f.label :password, "Senha*"%>
+            <%=f.password_field :password%>
           </p>
 
           <div class="clear"></div>
 
-          <input type="submit" name="submit" value="Submit">
+          <%= f.submit "Criar Conta" %>
 
         </div><!-- end #comment-form -->
 
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-        </div>
-        <div class="field">
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </div>
-        <div class="field">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
-        </div>
-        <div class="actions"><%= f.submit %></div>
+
     <% end %>
 
   </div>

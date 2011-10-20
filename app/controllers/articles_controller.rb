@@ -9,8 +9,6 @@ class ArticlesController < ApplicationController
       @articles = Article.find_by_sql("select * from articles")
     end
 
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
