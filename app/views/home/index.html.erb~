@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1 class="slogan">Aprenda, ensine e compartilhe conosco</h1>
+
+</div><!-- end .container -->
+
+
+<div class="container">
+
+  <div class="section-title">
+
+    <h6><span class="icon pages"></span>
+	<%=link_to "Melhores Tutoriais", articles_path(:sorting=>"best")%>
+</h6>
+
+  </div><!-- end .section-title -->
+
+  <ul class="blog-posts carousel">
+
+<%@bestArticles.each do |article|%>
+    <%=render article%>   
+<%end%>
+
+  </ul>
+
+</div><!-- end .container -->
