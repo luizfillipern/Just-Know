@@ -2,7 +2,14 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if params[:user_id]
+      @articles = Article.where(:user_id => params[:user_id])
+    else
+      #Aprimorar sql
+      @articles = Article.find_by_sql("select * from articles")
+    end
+
+
 
     respond_to do |format|
       format.html # index.html.erb
