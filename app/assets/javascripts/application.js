@@ -8,6 +8,5 @@
 //= require jquery_ujs
 //= require jquery.gridnav
 //= require jquery.cycle.all
-//= require jquery.fancybox-1.3.4.pack
 //= require jquery.easing.1.3
 //= require custom

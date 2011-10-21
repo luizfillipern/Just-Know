@@ -25,10 +25,6 @@
 
     <%=link_to "JustKnow", root_path, :id => "logo"%>
 
-    <ul class="social-links">
-      <%=link_to "Login", login_path%>
-    </ul>
-
     <ul id="nav">
       <li><%=link_to "Home", root_path%></li>
       <li><%=link_to "Tutoriais", articles_path%></li>
@@ -37,6 +33,9 @@
           <%=link_to "Meus Tutoriais", user_articles_path(current_user)%>
         </li>
       <%else%>
+        <li class="login">
+          <%=link_to "Login", login_path%>
+        </li>
       <%end%>
     </ul>
 
