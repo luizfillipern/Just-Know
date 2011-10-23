@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-    
-    has_many :articles
-    has_many :comments
-  attr_accessible :email, :password, :password_confirmation
 
-  validates_confirmation_of :password
+  has_many :articles
+  has_many :comments
+  has_many :ratings
+
+  attr_accessible :name, :email, :password
+
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
-
+  validates :email,
+            :presence => true,
+            :uniqueness => true,
+            :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 end

@@ -6,10 +6,12 @@ class ArticlesController < ApplicationController
       @articles = Article.where(:user_id => params[:user_id])
     else
       #Aprimorar sql
-      @articles = Article.find_by_sql("select * from articles")
+      @articles = Article.find_by_sql("select * from articles art where art.id in (
+                                      select article_id from articles a join ratings r on a.id = r.article_id
+                                      group by a.id order by sum(r.score) DESC
+                                          )
+                                      ")
     end
-
-
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +23,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @rating = @article.ratings.build
 
     respond_to do |format|
       format.html # show.html.erb

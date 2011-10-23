@@ -1,0 +1,13 @@
+<%if flash.any?%>
+    <div class="container">
+      <%if !flash[:alert].nil?%>
+          <p class="error">
+            <%=flash[:alert]%>
+          </p>
+      <%else%>
+          <p class="success">
+            <%=flash[:notice]%>
+          </p>
+      <%end%>
+    </div><!-- end .container -->
+<%end%>

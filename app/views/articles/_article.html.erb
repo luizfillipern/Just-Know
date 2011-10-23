@@ -6,5 +6,8 @@
 				<p><%=article.content%></p>
 				<p>
 				<%=link_to "Leia Mais", article, :class => "read-more"%></p>
+                <p>
+                  SCORE: <%=article.total_score%>
+                </p>
 			</li>
 			<%end%>

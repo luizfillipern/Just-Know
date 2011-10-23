@@ -1,13 +1,20 @@
 Justknow::Application.routes.draw do
-  resources :comments
-
-  resources :articles
-
   get "home/index"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+
+
+  resources :ratings
+
+  resources :categories
+
+
+  resources :articles do
+    resources :comments
+  end
+
 
   resources :users do
     resources :articles

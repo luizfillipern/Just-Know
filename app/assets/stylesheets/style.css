@@ -5,7 +5,7 @@
 body {	
 	background: #fff;
 	color: #76777a;
-	font: 11px/1.7 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	font: 13px/1.7 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 a {
@@ -247,9 +247,10 @@ input, textarea { color: #828080; }
 
 	.form input, .form textarea {
 		background: #fbfbfb;
-		border: 1px solid #d9e1e7;
+		border: 1px solid #54555a;
 		color: #54555a;
 		padding: 10px 15px;
+        width: 50%;
 	}
 
 		.form input:focus, .form textarea:focus {
@@ -365,13 +366,22 @@ input, textarea { color: #828080; }
 			padding: 0;
 		}
 
+        #nav li.login{
+            border-left: 1px solid #fbfbfb;
+        }
+
 			#nav li a {
-				color: #788188;
-				padding: 19px 15px;
+				color: #fbfbfb;
+				padding: 19px 5px 5px 5px;
+                margin: 0 10px;
 				position: relative;
+
 			}
 
-			#nav li a:hover, #nav li.active a, #nav li.hover a { color: #fff; }
+			#nav li a:hover, #nav li.active a, #nav li.hover a {
+                color: #d8ecf5;
+                border-bottom: 2px solid #9ac9df;
+            }
 
 			#nav li.active a:after, #nav li.hover a:after, #nav ul li.active a:after {
 				background: url(/assets/nav-active.png) no-repeat;
@@ -467,6 +477,7 @@ input, textarea { color: #828080; }
 				background: url(/assets/icon-home.png) no-repeat 0 0;
 				padding: 2px 0 0 24px;
 			}
+
 
 /* ---------------------------------------------------- */
 /*		Content
@@ -1075,7 +1086,7 @@ input, textarea { color: #828080; }
 	#comment-form .input-block, #contact-form .input-block {
 		float: left;
 		margin: 0 30px 20px 0;
-		width: 280px;
+		width: 400px;
 	}
 		
 		#comment-form .input-block:nth-child(2n), #contact-form .input-block:nth-child(2n) {
@@ -1088,7 +1099,7 @@ input, textarea { color: #828080; }
 
 		#comment-form input[type="text"], #contact-form input[type="text"] {
 			height: 22px;
-			width: 248px;
+			width: 380px;
 		}
 
 			#comment-form .input-block.long input[type="text"], #contact-form .input-block.long input[type="text"] { width: 558px; }
@@ -1096,7 +1107,7 @@ input, textarea { color: #828080; }
 	#comment-form .textarea-block, #contact-form .textarea-block {
 		float: left;
 		margin: 0 0 20px 0;
-		width: 590px;
+		width: 390px;
 	}
 
 		#comment-form textarea, #contact-form textarea {
@@ -1474,6 +1485,7 @@ input, textarea { color: #828080; }
 	color: #a2a2a2;
 	overflow: hidden;
 	padding: 17px 0;
+
 }
 
 	#footer p a {

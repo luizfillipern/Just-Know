@@ -2,6 +2,9 @@
 
 class SessionsController < ApplicationController
   def new
+    if params[:return_to_url]
+      session[:return_to_url] = params[:return_to_url]
+    end
   end
 
   def create
@@ -16,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_irl
+    redirect_to root_url
   end
 
 end

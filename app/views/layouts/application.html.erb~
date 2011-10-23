@@ -23,20 +23,27 @@
 
   <div class="container">
 
-    <%=link_to "JustKnow", root_path, :id => "logo"%>
+    <a href="index.html" id="logo">JustKnow</a>
+
+    <ul class="social-links">
+      <li class="twitter"><a href="#">Twitter</a></li>
+      <li class="dribbble"><a href="#">Dribbble</a></li>
+    </ul>
 
     <ul id="nav">
       <li><%=link_to "Home", root_path%></li>
       <li><%=link_to "Tutoriais", articles_path%></li>
-      <%if current_user%>
-        <li>
-          <%=link_to "Meus Tutoriais", user_articles_path(current_user)%>
-        </li>
-      <%else%>
-        <li class="login">
-          <%=link_to "Login", login_path%>
-        </li>
-      <%end%>
+      <li><%=link_to "Meu Perfil"%></li>
+      <li><a href="#">Drops</a>
+        <ul>
+          <li><a href="#">This is an example</a></li>
+          <li><a href="#">Of a simple</a></li>
+          <li><a href="#">Dropdown menu</a></li>
+        </ul>
+      </li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
     </ul>
 
   </div><!-- end .container -->
@@ -47,7 +54,7 @@
 
 <div id="content">
 
-  <%=render "/utils/flash_messages"%>
+  <%=yield(:status_bar)%>
 
   <%=yield%>
 
