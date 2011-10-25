@@ -5,7 +5,7 @@ Justknow::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
-
+  
   resources :ratings
 
   resources :categories
@@ -19,6 +19,8 @@ Justknow::Application.routes.draw do
   resources :users do
     resources :articles
   end
+
+  resources :users
 
   resources :sessions
 

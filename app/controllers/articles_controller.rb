@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 # GET /articles.json
   def index
     if params[:sorting]
-			if params[:sorting] = "lastest"
+			if params[:sorting] = "latest"
 				@articles = Article.order("updated_at DESC")
 			else
       				@articles = Article.find_by_sql("select * from articles art where art.id in (
