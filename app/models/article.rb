@@ -19,6 +19,7 @@ class Article < ActiveRecord::Base
     end
 
     def average_score
+      puts "VERIFICANDO OS RATINGS: #{self.ratings.inspect}"
       self.ratings.size > 0 ? total = total_score/(self.ratings.size) : total = 0
       total
     end
