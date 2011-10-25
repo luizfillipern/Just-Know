@@ -7,11 +7,15 @@ class ArticlesController < ApplicationController
 # GET /articles.json
   def index
     if params[:sorting]
-      @articles = Article.find_by_sql("select * from articles art where art.id in (
+			if params[:sorting] = "lastest"
+				@articles = Article.order("updated_at DESC")
+			else
+      				@articles = Article.find_by_sql("select * from articles art where art.id in (
                                       select article_id from articles a join ratings r on a.id = r.article_id
                                       group by a.id order by sum(r.score) DESC
                                           )
                                       ")
+			end
       @articles.instance_eval <<-EVAL
         def current_page
           #{params[:page] || 1}
@@ -41,6 +45,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     puts Article.all.inspect
+	 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }

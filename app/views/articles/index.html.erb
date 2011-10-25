@@ -12,7 +12,7 @@
       </li>
       <li>-</li>
       <li>
-        <%=link_to "Últimos", articles_path%>
+        <%=link_to "Últimos", articles_path(:sorting => "lastest")%>
       </li>
     </ul>
 
@@ -45,4 +45,4 @@
   </div><!-- end #blog -->
 
 </div>
-<%= link_to 'New Article', new_article_path %>
+
