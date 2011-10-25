@@ -7,18 +7,11 @@
       <p>
         <%=link_to "Leia Mais", article, :class => "read-more"%></p>
       <p>
-      <div id="score<%=article.id%>"></div>
+      <div class="score<%=article.id%>"></div>
       </p>
   <%end%>
 </li>
 
-<script type="text/javascript">
-    $("#score<%=article.id%>").raty({
-        precision: true,
-        half:      true,
-        readOnly:  true,
-        start: "<%=article.average_score%>"
-    });
-</script>
+
 
 
