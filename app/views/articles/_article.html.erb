@@ -1,15 +1,14 @@
 <li>
   <%=link_to article do%>
       <h4><%=article.title%></h4>
-      </a>
+      <%end%>
       <p class="meta"><%=time_ago_in_words article.created_at%> ago / <%=article.comments.count%> Comentários</p>
       <p><%=article.content%></p>
       <p>
         <%=link_to "Leia Mais", article, :class => "read-more"%></p>
       <p>
-      <div class="score<%=article.id%>"></div>
+        <div class="score<%=article.id%>"></div>
       </p>
-  <%end%>
 </li>
 
 
