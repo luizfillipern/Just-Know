@@ -1,0 +1,113 @@
+commit f58ac94c451e9264920caaada898b360a063b5a8
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Mon Oct 24 02:05:47 2011 -0300
+
+    Testando Branch
+
+commit 51fce7b643e42b91005cf8318691a08d984c9c73
+Merge: b4d9249 a45e51d
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Sun Oct 23 04:29:55 2011 -0300
+
+    Merge branch 'master' of github.com:miguel89/Just-Know
+    
+    Conflicts:
+    	db/development.sqlite3
+
+commit a45e51d922ff5aefa6bf720931177477d0b3aa51
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Fri Oct 21 16:59:23 2011 -0300
+
+    Fixing
+
+commit 1700f5d31f8587f4ab4d47f6876ae69acc1284b4
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Fri Oct 21 16:52:41 2011 -0300
+
+    Fixing
+
+commit cc6d6863b0c523c57e0c54003d0fda7765939fc0
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Thu Oct 20 15:11:22 2011 -0300
+
+    Fixed login and signup
+
+commit 831173d4b9aec28c7569d55ba388861fd1fa4498
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Wed Oct 19 23:30:04 2011 -0300
+
+    Fixed erro no model User causado pelo git
+
+commit b4d9249a660a492f32b743886b033bae68252cb5
+Merge: 5dd5899 d16386c
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Wed Oct 19 21:19:04 2011 -0300
+
+    Merge branch 'master' of github.com:miguel89/Just-Know
+
+commit 31bfd2d4c80e9a7c09499e02bc8461bf3711a6c9
+Merge: 3833788 5ca8ba1
+Author: Davyson Costa <davyson59@gmail.com>
+Date:   Wed Oct 19 22:48:58 2011 +0000
+
+    add categories, rating, resorces and other things...
+
+commit 5ca8ba15a0b1f5086cc8558d4a421a9bd1bae913
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Wed Oct 19 21:23:46 2011 -0300
+
+    consertada tela de cadastro de usuario, criada partial de flash messages
+
+commit d16386cff228a1211a5312cb5540825839302c03
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Wed Oct 19 19:39:22 2011 -0300
+
+    Consertando o application.html.erb e outras views
+
+commit 383378839e8a5b18163065533a175af8a2d7a3c1
+Author: Davyson Costa <davyson59@gmail.com>
+Date:   Wed Oct 19 22:20:59 2011 +0000
+
+    add categories, ratings, resorces and other things...
+
+commit 5dd58992d84d25564ede98728c6bb295df35aeba
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Wed Oct 19 16:47:35 2011 -0300
+
+    Atualizar banco
+
+commit 20eec48180775d65abcc7024accc08f829ec1ba5
+Author: Davyson Costa <davyson59@gmail.com>
+Date:   Wed Oct 19 19:44:52 2011 +0000
+
+    add categories, ratings, some resources...
+
+commit 71f238123b85c9022479cff0a421a3bbe1b1ed38
+Author: Davyson Costa <davyson59@gmail.com>
+Date:   Wed Oct 19 19:40:23 2011 +0000
+
+    add categories, ratings, some resources...
+
+commit cc6e73b8e9cf09bbf6652e4eb0ed3cd8bc5c392b
+Author: Diego Marcolan <diegosax@terra.com.br>
+Date:   Wed Oct 19 14:38:51 2011 -0300
+
+    test commit
+
+commit 32b4d4ba310ed138b5d0d02cf2f6fae9b5e1da87
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Tue Oct 18 17:33:25 2011 -0300
+
+    Adding Sqlite
+
+commit e10f184939aa2c2dc95e2459265b6e8ad17df3cd
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Tue Oct 18 17:27:56 2011 -0300
+
+    Created Articles, Comments Scaffolds
+
+commit 9a1b89234657a6941e8593825a0d94f6c7ca9e61
+Author: Miguel Amaral <miguel.a.amaral@gmail.com>
+Date:   Tue Oct 18 16:16:37 2011 -0300
+
+    first commit
