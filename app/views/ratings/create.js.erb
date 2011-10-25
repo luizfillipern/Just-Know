@@ -1,5 +1,7 @@
 <%if flash[:notice]%>
-    $("#rating_result").attr("class", "success").text("<%=flash[:notice]%>");
+    $("#rating_result").attr("class", "success").text("<%=flash[:notice]%>").setTimeout(this.fadeOut(),2000);
+    <%flash.delete(:success)%>
 <%else%>
     alert("nao votado: " + "<%=@rating.errors.full_messages%>");
 <%end%>
+

@@ -5,8 +5,21 @@
     <%= f.hidden_field :score%>
 <% end %>
 
+<%
+   initial_score = 0
+   current_user.ratings.each do |rating|
+       if rating.article_id == @rating.article_id
+           initial_score = rating.score
+           break
+       end
+   end
+   initial_score
+%>
+
+
 <script type="text/javascript">
     $('#submit_rating').raty({
+        start:      "<%=initial_score%>",
         half:       true,
         precision:  true,
         size:       24,
