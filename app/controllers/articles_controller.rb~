@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     elsif params[:user_id]
 		@articles = Article.where(:user_id => params[:user_id])
 	else
-		@articles = Article.order("updated_at DESC").page(params[:page]).per(3)
+		@articles = Article.order("updated_at DESC").page(params[:page]).per(2)
 		
     end
 

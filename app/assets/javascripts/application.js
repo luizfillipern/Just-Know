@@ -6,7 +6,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.gridnav
-//= require jquery.cycle.all
-//= require jquery.easing.1.3
 //= require custom
