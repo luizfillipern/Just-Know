@@ -1,3 +1,5 @@
+<%@rating = Rating.new(:article => article)%>
+
 <%= form_for(@rating) do |f| %>
     <div id="submit_rating">
     </div>
@@ -15,6 +17,12 @@
    end
    initial_score
 %>
+
+<%if initial_score > 0%>
+    <p>
+      Você já votou nesse tutorial, mas pode alterá-lo, basta votar outra vez
+    </p>
+<%end%>
 
 
 <script type="text/javascript">

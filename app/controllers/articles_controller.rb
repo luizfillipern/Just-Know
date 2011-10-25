@@ -11,14 +11,23 @@ class ArticlesController < ApplicationController
                                       select article_id from articles a join ratings r on a.id = r.article_id
                                       group by a.id order by sum(r.score) DESC
                                           )
-                                      ").limit(6)
-
-          
+                                      ")
+      @articles.instance_eval <<-EVAL
+        def current_page
+          #{params[:page] || 1}
+        end
+        def num_pages
+          count/limit_value
+        end
+        def limit_value
+          3
+        end
+      EVAL
+      Kaminari.paginate_array(@articles).page(params[:page])
     elsif params[:user_id]
-		@articles = Article.where(:user_id => params[:user_id])
-	else
-		@articles = Article.order("updated_at DESC").page(params[:page]).per(3)
-		
+      @articles = Article.where(:user_id => params[:user_id]).page(params[:page]).per(9)
+    else
+      @articles = Article.page(params[:page]).per(9)
     end
 
     respond_to do |format|
@@ -31,7 +40,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.joins(:ratings).find(params[:id])
-    @rating = @article.ratings.build
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,9 +70,11 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        puts "SALVOU: #{@article.inspect}"
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
+        puts "NAO SALVOU #{@article.inspect}"
         format.html { render action: "new" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end

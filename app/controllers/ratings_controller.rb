@@ -63,10 +63,10 @@ class RatingsController < ApplicationController
     respond_to do |format|
       if @rating.save
         format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.js {flash[:notice] = "Votação efetuada!"}
+        format.js {flash[:notice] = "Nota recebida com sucesso!"}
         format.json { render json: @rating, status: :created, location: @rating }
       else
-        format.js {flash[:alert] = "Votação NAO efetuada!"}
+        format.js {flash[:alert] = "Erro ao processar sua nota, tente mais tarde"}
         format.html { render action: "new" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end

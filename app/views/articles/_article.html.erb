@@ -1,13 +1,22 @@
 <li>
-	<%=link_to article do%>
-					<h4><%=article.title%></h4>
-				</a>
-				<p class="meta"><%=time_ago_in_words article.created_at%> ago / <%=article.comments.count%> Comentários</p>
-				<p><%=article.content%></p>
-				<p>
-				<%=link_to "Leia Mais", article, :class => "read-more"%></p>
-                <p>
-                  SCORE: <%=article.total_score%>
-                </p>
-			</li>
-			<%end%>
+  <%=link_to article do%>
+      <h4><%=article.title%></h4>
+      </a>
+      <p class="meta"><%=time_ago_in_words article.created_at%> ago / <%=article.comments.count%> Comentários</p>
+      <p><%=article.content%></p>
+      <p>
+        <%=link_to "Leia Mais", article, :class => "read-more"%></p>
+      <p>
+      <div id="score<%=article.id%>"></div>
+      </p>
+  <%end%>
+</li>
+
+<script type="text/javascript">
+    $("#score<%=article.id%>").raty({
+        readOnly:  true,
+        start: "<%=article.average_score%>"
+    });
+</script>
+
+

@@ -1,3 +1,25 @@
+<div id="breadcrumbs">
+
+	<div class="container">
+
+		<ul class="breadcrumbs">
+			<li class="home">
+              <%=link_to "Home", root_url%>
+            </li>
+			<li>-</li>
+			<li>
+                <%=link_to "Melhores", articles_path(:sorting => "best")%>
+            </li>
+			<li>-</li>
+			<li>
+                <%=link_to "Últimos", articles_path%>
+			</li>
+		</ul>
+
+	</div><!-- end .container -->
+
+</div>
+
 <div id="content">
 
 	<div id="blog" class="container">

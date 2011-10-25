@@ -8,10 +8,10 @@ class Article < ActiveRecord::Base
     validates_associated :category, :user
     validates :title, :presence=> true
 
+    default_scope order('updated_at DESC')
 
     def total_score
       total = 0
-      puts "Ratings: #{self.ratings.inspect}"
       self.ratings.each do |r|
         total = total + r.score unless r.score.nil?
       end
@@ -19,11 +19,8 @@ class Article < ActiveRecord::Base
     end
 
     def average_score
-      puts "CHAMANDO O AVERAGE_SCORE: "
-      puts total_score
-      total = total_score/(ratings.size-1)
-      puts total
-      total.inspect
+      total = total_score/(ratings.size)
+      total
     end
 
 end

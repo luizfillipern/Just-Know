@@ -1,3 +1,17 @@
+<div id="breadcrumbs">
+
+	<div class="container">
+
+		<ul class="breadcrumbs">
+			<li class="home">
+              <%= link_to 'Voltar aos tutoriais', articles_path %>
+			</li>
+		</ul>
+
+	</div><!-- end .container -->
+
+</div>
+
 <div id="content">
 
   <div class="container" id="blog">
@@ -74,7 +88,7 @@
         <h5>Deixe a sua:</h5>
         <p>
           <% if current_user %>
-              <%= render "/ratings/form"%>
+              <%= render :partial => "/ratings/form", :locals => {:article => @article}%>
               <p id="rating_result">
 
               </p>
@@ -138,18 +152,11 @@
 
 </div>
 
-<p>
-  Total Score:
-</p>
-
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-
 <script type="text/javascript">
     $('#total_score').raty({
         readOnly:  true,
+        half:      true,
+        precision: true,
         start: "<%=@article.average_score%>"
     });
 </script>
