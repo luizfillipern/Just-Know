@@ -3,17 +3,6 @@
     </div>
     <%= f.hidden_field :article_id,:value =>@rating.article_id %>
     <%= f.hidden_field :score%>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <div class="field">
-    <%= f.label :score %><br />
-    <%= f.number_field :score %>
-  </div>
-  <%= f.hidden_field :article_id,:value =>@rating.article_id %>
-    <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
 
 <script type="text/javascript">
@@ -29,7 +18,7 @@
         click: function(pontuacao, evt) {
             $.post("/ratings", {
                 score: pontuacao, article_id: $("#rating_article_id").val()
-                });
+            });
         }
     });
 </script>

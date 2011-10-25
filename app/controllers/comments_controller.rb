@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class CommentsController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
   # GET /comments

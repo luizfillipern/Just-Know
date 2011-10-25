@@ -1,7 +1,6 @@
 <li class="comment">
 
-  <%=image_tag avatar_url(comment.user)%>
-  <img class="avatar" alt="" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=50">
+  <%=image_tag avatar_url(comment.user,50), :class => "avatar"%>
 
   <div class="comment-body">
 
