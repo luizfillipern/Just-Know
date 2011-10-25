@@ -39,8 +39,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.joins(:ratings).find(params[:id])
-
+    @article = Article.find(params[:id])
+    puts Article.all.inspect
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }
@@ -67,14 +67,13 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
-        puts "SALVOU: #{@article.inspect}"
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
-        puts "NAO SALVOU #{@article.inspect}"
         format.html { render action: "new" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end

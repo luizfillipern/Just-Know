@@ -2,13 +2,13 @@ class Article < ActiveRecord::Base
     
     belongs_to :category
     belongs_to :user
-    has_many :comments
-    has_many :ratings
+    has_many :comments, :dependent => :delete_all
+    has_many :ratings, :dependent => :delete_all
     
     validates_associated :category, :user
     validates :title, :presence=> true
 
-    default_scope order('updated_at DESC')
+    default_scope includes(:ratings)
 
     def total_score
       total = 0
@@ -19,7 +19,7 @@ class Article < ActiveRecord::Base
     end
 
     def average_score
-      total = total_score/(ratings.size)
+      self.ratings.size > 0 ? total = total_score/(self.ratings.size) : total = 0
       total
     end
 

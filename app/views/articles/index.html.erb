@@ -1,51 +1,48 @@
 <div id="breadcrumbs">
 
-	<div class="container">
+  <div class="container">
 
-		<ul class="breadcrumbs">
-			<li class="home">
-              <%=link_to "Home", root_url%>
-            </li>
-			<li>-</li>
-			<li>
-                <%=link_to "Melhores", articles_path(:sorting => "best")%>
-            </li>
-			<li>-</li>
-			<li>
-                <%=link_to "Últimos", articles_path%>
-			</li>
-		</ul>
+    <ul class="breadcrumbs">
+      <li class="home">
+        <%=link_to "Home", root_url%>
+      </li>
+      <li>-</li>
+      <li>
+        <%=link_to "Melhores", articles_path(:sorting => "best")%>
+      </li>
+      <li>-</li>
+      <li>
+        <%=link_to "Últimos", articles_path%>
+      </li>
+    </ul>
 
-	</div><!-- end .container -->
+  </div><!-- end .container -->
 
 </div>
 
 <div id="content">
 
-	<div id="blog" class="container">
+  <div id="blog" class="container">
 
-		<div class="page-header clearfix">
+    <div class="page-header clearfix">
 
-			<h1 class="page-title">The Blog</h1>
+      <h1 class="page-title">Tutoriais</h1>
 
-			<div id="search-form" class="search">
-				<input type="text" value="" placeholder="Search the blog" class="placeholder">
-				<input type="submit" value="Go">
-			</div><!-- end #search-form -->
-						
-		</div><!-- end .page-header -->
-<%=paginate @articles%>	
+      <div id="search-form" class="search">
+      </div><!-- end #search-form -->
 
-		<ul class="blog-posts">
-            <%= render @articles%>
-	
+    </div><!-- end .page-header -->
+    <%=paginate @articles%>
 
-		</ul>
+    <ul class="blog-posts">
+      <%= render @articles%>
 
-		<hr>
+    </ul>
+
+    <hr>
 
 
-	</div><!-- end #blog -->
+  </div><!-- end #blog -->
 
 </div>
 <%= link_to 'New Article', new_article_path %>
