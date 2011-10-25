@@ -15,7 +15,7 @@
 <%=paginate @articles%>	
 
 		<ul class="blog-posts">
-            <%= render @articles%>
+            <% render @articles%>
 	
 
 		</ul>

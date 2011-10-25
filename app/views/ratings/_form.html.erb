@@ -11,6 +11,7 @@
         </div>
     <% end %>
 
+<<<<<<< HEAD
     <div id="submit_rating">
     </div>
     <%= f.hidden_field :article_id,:value =>@rating.article_id %>
@@ -18,6 +19,16 @@
     <div class="actions">
       <%= f.submit %>
     </div>
+=======
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.number_field :score %>
+  </div>
+  <%= f.hidden_field :article_id,:value =>@rating.article_id %>
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+>>>>>>> b39ba1b78a675bc5361fde7011d1ab96b2a8a5a2
 <% end %>
 
 <script type="text/javascript">

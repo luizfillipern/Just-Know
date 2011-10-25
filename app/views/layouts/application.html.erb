@@ -6,7 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>JustKnow</title>
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> b39ba1b78a675bc5361fde7011d1ab96b2a8a5a2
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
@@ -27,10 +31,20 @@
 
     <ul id="nav">
       <li><%=link_to "Home", root_path%></li>
-      <li><%=link_to "Tutoriais", articles_path%></li>
+      <li><%=link_to "Artigos", articles_path%>
+      
+      <%if current_user %>
+          <ul>
+                <li><%= link_to 'Novo Artigo', new_article_path %></li>
+          </ul>
+          
+       <%end%>
+      
+      </li>
+      
       <%if current_user%>
         <li>
-          <%=link_to "Meus Tutoriais", user_articles_path(current_user)%>
+          <%=link_to "Meus Artigos", user_articles_path(current_user)%>
         </li>
       <%else%>
         <li class="login">
@@ -57,13 +71,13 @@
 
   <div class="container">
 
-    <p class="align-left">&copy; 2011, Awesome. All right reserved. Developed by <a href="http://themeforest.net/user/Smuliii/profile/?ref=smuliii">Smulii</a>.</p>
+    <p class="align-left">&copy; 2011, Just Know. Todos os direitos reservados. Layout desenvolvido por <a href="http://themeforest.net/user/Smuliii/profile/?ref=smuliii">Smulii</a>.</p>
 
     <ul class="social-links align-right">
       <li class="twitter"><a href="#">Twitter</a></li>
       <li class="facebook"><a href="#">Facebook</a></li>
-      <li class="dribbble"><a href="#">Dribbble</a></li>
-      <li class="skype"><a href="#">Skype</a></li>
+<!--      <li class="dribbble"><a href="#">Dribbble</a></li>
+      <li class="skype"><a href="#">Skype</a></li> -->
     </ul>
 
   </div><!-- end .container -->

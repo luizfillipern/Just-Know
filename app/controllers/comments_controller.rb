@@ -82,9 +82,8 @@ class CommentsController < ApplicationController
         format.json { head :ok }
       end
     else
-      redirect_to {@comment.article, :alert => "Você não possui permissão para remover este comentário"}
+      redirect_to @comment.article, alert: "Você não possui permissão para remover este comentário"
     end
-
 
 
   end
