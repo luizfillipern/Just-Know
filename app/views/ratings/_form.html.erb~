@@ -16,7 +16,11 @@
     <%= f.number_field :score %>
   </div>
   <%= f.hidden_field :article_id,:value =>@rating.article_id %>
-    <div class="actions">
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
