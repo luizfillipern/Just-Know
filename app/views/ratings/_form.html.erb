@@ -1,17 +1,4 @@
 <%= form_for(@rating) do |f| %>
-    <% if @rating.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
-
-          <ul>
-            <% @rating.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-<<<<<<< HEAD
     <div id="submit_rating">
     </div>
     <%= f.hidden_field :article_id,:value =>@rating.article_id %>
@@ -19,7 +6,6 @@
     <div class="actions">
       <%= f.submit %>
     </div>
-=======
   <div class="field">
     <%= f.label :score %><br />
     <%= f.number_field :score %>
@@ -28,7 +14,6 @@
     <div class="actions">
     <%= f.submit %>
   </div>
->>>>>>> b39ba1b78a675bc5361fde7011d1ab96b2a8a5a2
 <% end %>
 
 <script type="text/javascript">
