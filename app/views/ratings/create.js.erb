@@ -1,5 +1,5 @@
 <%if flash[:notice]%>
-    $("#rating_result").attr("class", "success").innerHTML("<%=flash[:notice]%>");
+    $("#rating_result").attr("class", "success").text("<%=flash[:notice]%>");
 <%else%>
     alert("nao votado: " + "<%=@rating.errors.full_messages%>");
 <%end%>
