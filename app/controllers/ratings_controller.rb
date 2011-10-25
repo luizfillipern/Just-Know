@@ -1,6 +1,9 @@
+#encoding: utf-8
+
 class RatingsController < ApplicationController
   before_filter :require_login, :only => :create
-  
+
+
   # GET /ratings
   # GET /ratings.json
   def index
@@ -42,14 +45,28 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(params[:rating])
+    @rating = Rating.new
     @rating.user = current_user
-    
+    @rating.score = params[:score]
+    @rating.article_id = params[:article_id]
+
+    ratings = current_user.ratings
+
+    ratings.each do |r|
+      if r.article_id == @rating.article_id
+        r.score = @rating.score
+        @rating = r
+      end
+    end
+    puts @rating.inspect
+
     respond_to do |format|
       if @rating.save
         format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
+        format.js {flash[:notice] = "Votação efetuada!"}
         format.json { render json: @rating, status: :created, location: @rating }
       else
+        format.js {flash[:alert] = "Votação NAO efetuada!"}
         format.html { render action: "new" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end

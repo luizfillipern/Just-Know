@@ -1,0 +1,5 @@
+<%if flash[:notice]%>
+    alert("Votado");
+<%else%>
+    alert("nao votado: " + "<%=@rating.errors.full_messages%>");
+<%end%>

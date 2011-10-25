@@ -1,5 +1,152 @@
-<p id="notice"><%= notice %></p>
+<div id="content">
 
+  <div class="container" id="blog">
+
+    <div class="page-header clearfix">
+
+      <h1 class="page-title"></h1>
+
+      <div class="search" id="search-form">
+
+      </div><!-- end #search-form -->
+
+    </div><!-- end .page-header -->
+
+    <div id="main">
+
+      <div class="entry">
+
+        <h2 class="title">
+          <%= @article.title%>
+        </h2>
+        <p class="meta">
+          <%=@article.updated_at.strftime("%d de %B de %Y")%> / <%=link_to "#{@article.comments.size} comentários", "#comments"%></p>
+
+
+
+        <p>
+          <%=@article.content%>
+        </p>
+
+
+
+      </div><!-- end .comments -->
+
+      <div class="comments">
+        <% if @article.comments.size > 0 %>
+
+            <h3>Comentários (<%=@article.comments.size%>)</h3>
+
+            <ol class="comments-list">
+
+              <%@article.comments.each do |comment|%>
+                  <%=render comment%>
+              <%end%>
+
+            </ol>
+        <%end%>
+
+      </div><!-- end .comments -->
+
+      <div class="response">
+
+        <h3>Deixe seu comentário</h3>
+
+        <%if current_user%>
+            <%=render :partial => "/comments/form", :locals => {:article => @article}%>
+
+        <%else%>
+            <%=link_to "Por favor, efetue seu login ou cadastre-se para deixar seu comentário", login_path%>
+        <%end%>
+
+      </div><!-- end .response -->
+
+    </div><!-- end #main -->
+
+    <div id="sidebar">
+
+      <div class="widget">
+        <h4 class="widget-title">Text Widget</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in vestibulum eros. Praesent at cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      </div><!-- end .widget -->
+
+      <div class="widget">
+        <h4 class="widget-title">Categories</h4>
+        <ul>
+          <li><a href="#">Creative Direction</a></li>
+          <li><a href="#">Marketing Launches</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Speaking</a></li>
+          <li><a href="#">Honors and Awards</a></li>
+          <li><a href="#">Project Launches</a></li>
+        </ul>
+      </div><!-- end .widget -->
+
+      <div class="widget">
+        <h4 class="widget-title">Recent Posts</h4>
+        <ul>
+          <li>
+            <a href="#">
+              Lorem ipsum dolor
+              <span class="meta">January 22, 2011</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Consectetur adipiscing elit
+              <span class="meta">January 22, 2011</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              In in vestibulum eros
+              <span class="meta">January 22, 2011</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Consectetur adipiscing
+              <span class="meta">January 22, 2011</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Praesent at cursus
+              <span class="meta">January 22, 2011</span>
+            </a>
+          </li>
+        </ul>
+      </div><!-- end .widget -->
+
+      <div class="widget">
+        <h4 class="widget-title">Twitter Feed</h4>
+        <ul class="tweets">
+          <li>
+            <a href="#">
+              @envato. Activetuts+ Has a New Focus: Browser-Based Apps and Games
+              <span class="meta">about 15 hours ago</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              @envato. Activetuts+ Has a New Focus: Browser-Based Apps and Games
+              <span class="meta">about 15 hours ago</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              @envato. Activetuts+ Has a New Focus: Browser-Based Apps and Games
+              <span class="meta">about 15 hours ago</span>
+            </a>
+          </li>
+        </ul>
+      </div><!-- end .widget -->
+
+    </div><!-- end #sidebar -->
+
+  </div><!-- end #blog -->
+
+</div>
 
 <p>
   <b>Title:</b>
@@ -17,21 +164,27 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @article.user_id %>
-</p>
-
-<p>
   <b>Level:</b>
   <%= @article.level %>
 </p>
 
+<p>
+  Total Score: <div id="total_score"></div>
+</p>
+
 <% if current_user %>
-  <%= render "/ratings/form"%>
+    <%= render "/ratings/form"%>
 <%else%>
-  <p>É necessário estar logado para efetuar uma votação.</p>
-  <p> <%= link_to "Clique aqui para efetuar o login.", login_path(:return_to_url => article_path(@article))%> </p>
+    <p>É necessário estar logado para efetuar uma votação.</p>
+    <p> <%= link_to "Clique aqui para efetuar o login.", login_path(:return_to_url => article_path(@article))%> </p>
 <%end%>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+
+<script type="text/javascript">
+    $('#total_score').raty({
+        readOnly:  true,
+        start:     <%=@article.average_score%>
+    });
+</script>

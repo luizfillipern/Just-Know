@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :require_login, :except => [:index, :show]
   # GET /comments
   # GET /comments.json
   def index
@@ -45,7 +46,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [:article,@comment], notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.article, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
@@ -74,11 +75,17 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url }
-      format.json { head :ok }
+    if @comment.user == current_user
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to @comment.article }
+        format.json { head :ok }
+      end
+    else
+      redirect_to {@comment.article, :alert => "Você não possui permissão para remover este comentário"}
     end
+
+
+
   end
 end

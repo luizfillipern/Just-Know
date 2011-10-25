@@ -1,0 +1,21 @@
+<li class="comment">
+
+  <%=image_tag avatar_url(comment.user)%>
+  <img class="avatar" alt="" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=50">
+
+  <div class="comment-body">
+
+    <h4 class="author">
+      <%=link_to comment.user.name, comment.user%>
+    </h4>
+    <p class="meta"><%=comment.created_at.strftime("%d de %B de %Y")%></p>
+
+    <p>
+      <%=comment.content%>
+    </p>
+    <%if current_user == comment.user%>
+        <%=link_to "Remover", comment, :method => :delete, :class => "align-right", :confirm => "Deseja realmente remover este comentário?" %>
+    <%end%>
+  </div><!-- end .comment -->
+
+</li>

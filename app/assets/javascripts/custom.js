@@ -66,38 +66,6 @@ $(function() {
 
 /* end Input Placeholders */
 
-/* ---------------------------------------------------- */
-/*		Homepage Project Grid
-/* ---------------------------------------------------- */
-
-$(function(){
-	$('#projects-slider').gridnav({
-		rows	: 2,
-		type	: {
-			mode		: 'sequpdown',
-			speed		: 350,
-			easing		: 'easeOutCubic',
-			factor		: 50,
-			reverse		: false,
-			timeout		: 3000
-		}
-	});
-});
-
-/* end Homepage Project Grid */
-
-/* ---------------------------------------------------- */
-/*		Blog Post Carousel
-/* ---------------------------------------------------- */
-
-$(function() {
-	$('.carousel').jcarousel({
-		animation: 600,
-		easing: 'easeOutCubic'
-	});
-});
-
-/* end Blog Post Carousel */
 
 
 /* ---------------------------------------------------- */
@@ -151,58 +119,6 @@ $(function() {
 });
 
 /* end Blog Post Carousel */
-
-/* ---------------------------------------------------- */
-/*		Fancybox
-/* ---------------------------------------------------- */
-
-$(function(){
-	// Images
-	$("a.single_image").fancybox({
-		'transitionIn'	: 'fade',
-		'transitionOut'	: 'fade',
-		'titlePosition'	: 'over'
-	});
-	$("a.multi_images").fancybox({
-		'transitionIn'	: 'fade',
-		'transitionOut'	: 'fade',
-		'titlePosition'	: 'over'
-	});
-
-	//Iframe
-	$("a.iframe").fancybox({
-		'width'				: '75%',
-		'height'			: '75%',
-		'autoScale'     	: false,
-		'transitionIn'		: 'fade',
-		'transitionOut'		: 'fade',
-		'type'				: 'iframe',
-		'titleShow'		    : false
-	});
-
-	// Youtube Video
-	$(".youtube_video").click(function() {
-		$.fancybox({
-				'padding'		: 0,
-				'autoScale'		: false,
-				'transitionIn'	: 'fade',
-				'transitionOut'	: 'fade',
-				'title'			: this.title,
-				'width'		    : 680,
-				'height'		: 495,
-				'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
-				'type'			: 'swf',
-				'swf'			: {
-					'wmode'		: 'transparent',
-					'allowfullscreen'	: 'true'
-				}
-			});
-
-		return false;
-	});
-});
-
-/* end Fancybox */
 
 /* ---------------------------------------------------- */
 /*		Accordion Content
@@ -285,22 +201,9 @@ $(function(){
 
 /* end Contact Form */
 
-/* ---------------------------------------------------- */
-/*		Single Work Slider(s)
-/* ---------------------------------------------------- */
 
-$(function() {
-	$('#single-project .slider')
-		.after('<div class="single-project-slider-nav">')
-		.each(function(){
-			var p = this.parentNode;
-			$(this).cycle({
-				fx: 'fade',
-				pager:  $('.single-project-slider-nav', p),
-				pause: true,
-				speed: 600
-			});    
-	});
-});
-
-/* end Single Work Slider */
+    //Indicando que as requisicoes ajax serao enviadas ao controlador como .js
+    jQuery.ajaxSetup({
+        'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+    });
+    //fim da configuracao do ajax

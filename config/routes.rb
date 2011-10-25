@@ -11,9 +11,9 @@ Justknow::Application.routes.draw do
   resources :categories
 
 
-  resources :articles do
-    resources :comments
-  end
+  resources :articles
+
+  resources :comments
 
 
   resources :users do

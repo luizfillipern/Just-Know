@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
                                       select article_id from articles a join ratings r on a.id = r.article_id
                                       group by a.id order by sum(r.score) DESC
                                           )
-                                      ")
+                                      ").limit(6)
     end
 
     respond_to do |format|
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
+    @article = Article.joins(:ratings).find(params[:id])
     @rating = @article.ratings.build
 
     respond_to do |format|
