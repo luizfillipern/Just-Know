@@ -1,4 +1,9 @@
 <div class="container">
+	<h3>Busca de Artigos por Categoria</h3>
+	<div class="field">
+    <%= label :category %><br />
+    <%= select :category, [" ","Engenharia de Software", "Desenvolvimento", "Linguagens de Programação"] %>
+  </div>	
 
   <h1 class="slogan">
     Share Your Knowledge
@@ -35,13 +40,14 @@
 
 </div><!-- end .container -->
 
+<div class="clear"></div>
 
 <div class="container">
 
   <div class="section-title">
 
     <h6><span class="icon pages"></span>
-      <%=link_to "Últimos Tutoriais Adicionados", articles_path(:sorting=>"lastest")%>
+      <%=link_to "Últimos Tutoriais Adicionados", articles_path(:sorting=>"latest")%>
     </h6>
 
   </div><!-- end .section-title -->

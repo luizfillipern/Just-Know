@@ -25,6 +25,12 @@
   </div>
   
   <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select :category, ["Engenharia de Software", "Desenvolvimento", "Linguagens de Programação"] %>
+  </div>
+
+	
+  <div class="field">
     <%= f.label :level %><br />
     <%= f.select :level, ["Iniciante","Intermediário", "Avançado"] %>
   </div>
