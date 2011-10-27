@@ -1,10 +1,13 @@
 Justknow::Application.routes.draw do
+  get "tags/index"
+
   get "home/index"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
+  get "tags" => "tags#index"
   
   resources :ratings
 

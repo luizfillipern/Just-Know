@@ -7,7 +7,14 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 
-gem "kaminari"  
+gem 'will_paginate', '> 3.0'
+
+gem 'thinking-sphinx',
+  :git     => 'git://github.com/freelancing-god/thinking-sphinx.git',
+  :branch  => 'rails3'
+
+gem 'acts-as-taggable-on', '~>2.1.0'
+
 
 # Gems used only for assets and not required
 # in production environments by default.

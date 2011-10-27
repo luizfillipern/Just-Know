@@ -1,67 +1,52 @@
-class ArticlesController < ApplicationController
+  class ArticlesController < ApplicationController
 
-  before_filter :require_login, :except => [:index, :show]
+    before_filter :require_login, :except => [:index, :show]
 
 
-# GET /articles
-# GET /articles.json
-  def index
-    if params[:sorting]
-			if params[:sorting] = "latest"
-				@articles = Article.order("updated_at DESC")
-			else
-      				@articles = Article.find_by_sql("select * from articles art where art.id in (
-                                      select article_id from articles a join ratings r on a.id = r.article_id
-                                      group by a.id order by sum(r.score) DESC
-                                          )
-                                      ")
-			end
-      @articles.instance_eval <<-EVAL
-        def current_page
-          #{params[:page] || 1}
+  # GET /articles
+  # GET /articles.json
+    def index
+      @articles = Article.page(params[:page]).per_page(2)
+      if params[:sorting]
+        if params[:sorting] == "latest"
+          @articles = @articles.order("updated_at DESC")
+        elsif params[:sorting] == "best"
+          @articles = @articles.joins(:ratings).group(:article_id).order("sum(score)/count(*) desc")
         end
-        def num_pages
-          count/limit_value
-        end
-        def limit_value
-          3
-        end
-      EVAL
-      Kaminari.paginate_array(@articles).page(params[:page])
-    elsif params[:user_id]
-      @articles = Article.where(:user_id => params[:user_id]).page(params[:page]).per(9)
-    else
-      @articles = Article.page(params[:page]).per(9)
+      elsif params[:user_id]
+        @articles = @articles.where(:user_id => params[:user_id]).page(params[:page]).per(9)
+      end
+
+      
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @articles }
+      end
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @articles }
-    end
-  end
+    # GET /articles/1
+    # GET /articles/1.json
+    def show
+      @article = Article.find(params[:id])
+      puts Article.all.inspect
 
-  # GET /articles/1
-  # GET /articles/1.json
-  def show
-    @article = Article.find(params[:id])
-    puts Article.all.inspect
-	 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @article }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @article }      
+      end
     end
-  end
 
-  # GET /articles/new
-  # GET /articles/new.json
-  def new
-    @article = Article.new
+    # GET /articles/new
+    # GET /articles/new.json
+    def new
+      @article = Article.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @article }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @article }
+      end
     end
-  end
 
   # GET /articles/1/edit
   def edit
@@ -83,6 +68,10 @@ class ArticlesController < ApplicationController
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def test
+
   end
 
   # PUT /articles/1

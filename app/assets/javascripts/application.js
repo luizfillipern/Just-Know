@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.raty
+//= require jquery.tokeninput.js
 //= require custom
 
 

@@ -221,3 +221,17 @@ setTimeout(hideFlashes, 8000);
 //Fim da configuracao do tempo das flash messages
 //-----------------------------------------------------------------------------------------
 
+//------------------------------------------------------------------
+//Token Input
+
+$(function () {
+    $('#article_article_tags').tokenInput('/tags.json', {
+        crossDomain: false
+    });
+});
+
+$('#article_content').keypress(function(key){
+    alert(key);
+});
+
+//------------------------------------------------------------------

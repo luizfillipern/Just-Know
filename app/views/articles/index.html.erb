@@ -30,9 +30,10 @@
 
       <div id="search-form" class="search">
       </div><!-- end #search-form -->
-
+    <div class="clear"></div>
+      <%=will_paginate @articles, :previous_label => "<- Anterior", :next_label => "Próximo ->"%>
     </div><!-- end .page-header -->
-    <%=paginate @articles%>
+
 
     <ul class="blog-posts">
       <%= render @articles%>
@@ -41,7 +42,7 @@
 
     <hr>
 
-
+     <%=will_paginate @articles, :previous_label => "<- Anterior", :next_label => "Próximo ->"%>
   </div><!-- end #blog -->
 
 </div>
