@@ -10,6 +10,10 @@ class Article < ActiveRecord::Base
 
     default_scope includes(:ratings)
 
+	def self.search(terms)
+		where("title LIKE :t OR content LIKE :t", :t => "%#{terms}%")	
+	end
+
     def total_score
       total = 0
       self.ratings.each do |r|

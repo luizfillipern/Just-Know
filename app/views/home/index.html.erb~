@@ -1,8 +1,15 @@
 <div class="container">
-	<h3>Busca de Artigos por Categoria</h3>
-	<div class="field">
-    <%= label :category %><br />
-    <%= select :category, [" ","Engenharia de Software", "Desenvolvimento", "Linguagens de Programação"] %>
+
+<h3>Search</h3>
+	<%= form_tag articles_path, :method => :get do%>
+		<%= text_field_tag :search, "",
+			:placeholder => "Busca por artigos ou categorias",
+			:size => 35,
+			:type => "search",
+			:class => "search-field"%>
+	<%end%>
+
+<div class="field">
   </div>	
 
   <h1 class="slogan">

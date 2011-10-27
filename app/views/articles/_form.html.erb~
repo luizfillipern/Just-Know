@@ -25,6 +25,12 @@
   </div>
   
   <div class="field">
+    <%= f.label :category_id, "Categoria" %><br />
+    <%= f.collection_select :category_id, @categories, :id, :name %>
+  </div>
+
+	
+  <div class="field">
     <%= f.label :level %><br />
     <%= f.select :level, ["Iniciante","Intermediário", "Avançado"] %>
   </div>

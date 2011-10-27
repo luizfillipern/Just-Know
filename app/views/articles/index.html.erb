@@ -32,13 +32,15 @@
       </div><!-- end #search-form -->
 
     </div><!-- end .page-header -->
-    <%=paginate @articles%>
+    
+	<% if @articles.present?%>
+    	<ul class="blog-posts">
+   		   <%= render @articles%>
 
-    <ul class="blog-posts">
-      <%= render @articles%>
-
-    </ul>
-
+    	</ul>
+	<%else%>
+		<p>A sua busca não retornou resultados</p>
+    <%end%>
     <hr>
 
 

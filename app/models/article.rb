@@ -9,6 +9,11 @@ class Article < ActiveRecord::Base
     validates :title, :presence=> true
 
     default_scope includes(:ratings)
+	
+
+	def self.search(terms)
+		where("title LIKE :t OR content LIKE :t", :t => "%#{terms}%")	
+	end
 
     def total_score
       total = 0

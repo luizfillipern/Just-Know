@@ -1,13 +1,21 @@
 class ArticlesController < ApplicationController
 
   before_filter :require_login, :except => [:index, :show]
-
+  before_filter :load_categories, :only => [:index, :new]
 
 # GET /articles
 # GET /articles.json
   def index
-    if params[:sorting]
-			if params[:sorting] = "lastest"
+	if params[:search].present?
+		@articles = Article.scoped
+		@articles = @articles.search(params[:search])
+		
+		@articles += @category.articles if @category.present?
+		#respond_with @articles.to_a
+	
+		
+    elsif params[:sorting]
+			if params[:sorting] = "latest"
 				@articles = Article.order("updated_at DESC")
 			else
       				@articles = Article.find_by_sql("select * from articles art where art.id in (
@@ -112,4 +120,13 @@ class ArticlesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+protected
+  def load_categories
+	@categories = Category.all
+  	@category = Category.search(params[:search]) if params[:search].present?
+  end
+
+
 end
+
