@@ -1,12 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-	@lastestArticles = Article.order("updated_at DESC")
-  	@bestArticles = Article.joins(:ratings).group(:article_id).order("sum(score)/count(*) desc")
+	  @lastestArticles = Article.order("updated_at DESC")
+  	@bestArticles = Article.order("average_score DESC")
   end
-
-  def show
-  	@article = Article.find(2);
-  end
-
 end

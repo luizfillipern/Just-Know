@@ -30,19 +30,30 @@
 
       <div id="search-form" class="search">
       </div><!-- end #search-form -->
-    <div class="clear"></div>
+      <div class="clear"></div>
       <%=will_paginate @articles, :previous_label => "<- Anterior", :next_label => "Próximo ->"%>
     </div><!-- end .page-header -->
 
-
     <ul class="blog-posts">
-      <%= render @articles%>
-
+      <% if @articles.present?%>
+          <ul class="blog-posts">
+            <%@articles.each do |article|%>
+                <%=render article%>
+                <script type="text/javascript">
+                    $(".score<%=article.id%>").raty({
+                        readOnly:  true,
+                        half:      true,
+                        precision: true,
+                        start: "<%=article.total_score%>"
+                    });
+                </script>
+            <%end%>
+          </ul>
+      <%else%>
+          <p>A sua busca não retornou resultados</p>
+      <%end%>
     </ul>
-
     <hr>
-
-     <%=will_paginate @articles, :previous_label => "<- Anterior", :next_label => "Próximo ->"%>
   </div><!-- end #blog -->
 
 </div>

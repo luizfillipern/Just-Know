@@ -1,8 +1,9 @@
 <%if flash[:notice]%>
-    $("#rating_result").attr("class", "success").text("<%=flash[:notice]%>");
-    <%flash.delete(:notice)%>
+$("#rating_result").attr("class", "success").text("<%=flash[:notice]%>");
+<%flash.delete(:notice)%>
+
 <%else%>
-    $("#rating_result").attr("class", "error").text("<%=flash[:alert]%>");
-    <%flash.delete(:alert)%>
+$("#rating_result").attr("class", "error").text("<%=flash[:alert]%>");
+<%flash.delete(:alert)%>
 <%end%>
 

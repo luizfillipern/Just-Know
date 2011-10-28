@@ -1,5 +1,4 @@
 class Article < ActiveRecord::Base
-
   belongs_to :category
   belongs_to :user
   has_many :comments, :dependent => :delete_all
@@ -9,16 +8,13 @@ class Article < ActiveRecord::Base
   validates :title, :presence=> true
 
 
-  default_scope includes(:ratings)
+  validates_associated :category, :user
+  validates :title, :presence=> true
 
   acts_as_taggable
 
   def total_score
-    total = 0
-    self.ratings.each do |r|
-      total = total + r.score unless r.score.nil?
-    end
-    total
+    average_score
   end
 
   def article_tags=(ids)
@@ -28,11 +24,4 @@ class Article < ActiveRecord::Base
   def article_tags
     self.tags
   end
-
-  def average_score
-    puts "VERIFICANDO OS RATINGS: #{self.ratings.inspect}"
-    self.ratings.size > 0 ? total = total_score/(self.ratings.size) : total = 0
-    total
-  end
-
 end

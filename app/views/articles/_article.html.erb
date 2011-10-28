@@ -1,15 +1,17 @@
 <li>
+  <div class="avg_rating" style="visibility: hidden;"><%=article.average_score%></div>
   <%=link_to article do%>
       <h4><%=article.title%></h4>
-      <%end%>
-      <p class="meta"><%=time_ago_in_words article.created_at%> ago / <%=article.comments.count%> Comentários</p>
-      <p><%=article.content%></p>
-      <p>
-        <%=link_to "Leia Mais", article, :class => "read-more"%></p>
-      <p>
-        <div class="score<%=article.id%>"></div>
-      </p>
+  <%end%>
+  <p class="meta"><%=time_ago_in_words article.created_at%> ago / <%=article.comments.count%> Comentários</p>
+  <p><%=article.content%></p>
+  <p>
+    <%=link_to "Leia Mais", article, :class => "read-more"%></p>
+  <div class="score"></div>
+
 </li>
+
+
 
 
 

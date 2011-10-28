@@ -234,4 +234,7 @@ $('#article_content').keypress(function(key){
     alert(key);
 });
 
+$(".blog-posts li").live("hover", function(){
+    //alert($(this + " .avg_rating"));
+});
 //------------------------------------------------------------------

@@ -1,52 +1,51 @@
-  class ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
 
-    before_filter :require_login, :except => [:index, :show]
+  before_filter :require_login, :except => [:index, :show]
+  before_filter :load_categories, :only => [:index, :new]
 
 
-  # GET /articles
-  # GET /articles.json
-    def index
-      @articles = Article.page(params[:page]).per_page(2)
-      if params[:sorting]
-        if params[:sorting] == "latest"
-          @articles = @articles.order("updated_at DESC")
-        elsif params[:sorting] == "best"
-          @articles = @articles.joins(:ratings).group(:article_id).order("sum(score)/count(*) desc")
-        end
-      elsif params[:user_id]
-        @articles = @articles.where(:user_id => params[:user_id]).page(params[:page]).per(9)
-      end
 
-      
-
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @articles }
+# GET /articles
+# GET /articles.json
+  def index
+    @articles = Article.paginate(:page => params[:page], :per_page => 9)
+    if params[:sorting]
+      if params[:sorting] == "latest"
+        @articles = @articles.order("updated_at DESC")
+      elsif params[:sorting] == "best"
+        @articles = @articles.order("average_score DESC")
       end
     end
-
-    # GET /articles/1
-    # GET /articles/1.json
-    def show
-      @article = Article.find(params[:id])
-      puts Article.all.inspect
-
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @article }      
-      end
+    if params[:user_id]
+      @articles = @articles.where(:user_id => params[:user_id])
     end
 
-    # GET /articles/new
-    # GET /articles/new.json
-    def new
-      @article = Article.new
-
-      respond_to do |format|
-        format.html # new.html.erb
-        format.json { render json: @article }
-      end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @articles }
     end
+  end
+
+  # GET /articles/1
+  # GET /articles/1.json
+  def show
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @article }
+    end
+  end
+
+  # GET /articles/new
+  # GET /articles/new.json
+  def new
+    @article = Article.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @article }
+    end
+  end
 
   # GET /articles/1/edit
   def edit
@@ -101,4 +100,13 @@
       format.json { head :ok }
     end
   end
+
+  protected
+  def load_categories
+    @categories = Category.all
+    @category = Category.search(params[:search]) if params[:search].present?
+  end
+
+
 end
+

@@ -12,7 +12,7 @@
       </li>
       <li>-</li>
       <li>
-        <%=link_to "Últimos", articles_path(:sorting => "lastest")%>
+        <%=link_to "Últimos", articles_path(:sorting => "latest")%>
       </li>
     </ul>
 
@@ -32,13 +32,15 @@
       </div><!-- end #search-form -->
 
     </div><!-- end .page-header -->
-    <%=paginate @articles%>
-
+    
+	<% if @articles.present?%>
     <ul class="blog-posts">
       <%= render @articles%>
 
     </ul>
-
+	<%else%>
+		<p>A sua busca não retornou resultados</p>
+    <%end%>
     <hr>
 
 
