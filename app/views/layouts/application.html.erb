@@ -21,25 +21,29 @@
 <div id="header">
 
   <div class="container">
-
-    <%=link_to "JustKnow", root_path, :id => "logo"%>
+    
+      <%=link_to "JustKnow", root_path, :id => "logo"%>
 
     <ul id="nav">
+    <li>
+    <%= form_tag articles_path, :method => :get do%>
+      <%= text_field_tag :search, "",
+        :placeholder => "Busca por artigos ou categorias",
+        :size => 35,
+        :type => "search",
+        :class => "search-field"%>
+    <%end%> </li>
       <li><%=link_to "Home", root_path%></li>
       <li><%=link_to "Artigos", articles_path%>
-      
-      <%if current_user %>
-          <ul>
-                <li><%= link_to 'Novo Artigo', new_article_path %></li>
-          </ul>
-          
-       <%end%>
       
       </li>
       
       <%if current_user%>
         <li>
           <%=link_to "Meus Artigos", user_articles_path(current_user)%>
+          <ul>
+                <li><%= link_to 'Novo Artigo', new_article_path %></li>
+          </ul>
         </li>
       <%else%>
         <li class="login">
