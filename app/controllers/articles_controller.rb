@@ -8,17 +8,21 @@ class ArticlesController < ApplicationController
 # GET /articles
 # GET /articles.json
   def index
-    @articles = Article.paginate(:page => params[:page], :per_page => 9)
+    @articles = Article.paginate(:page => params[:page], :per_page => 1)
+    if params[:category_id]
+      @articles = @articles.where(:category_id => params[:category_id])
+    end
+    if params[:user_id]
+      @articles = @articles.where(:user_id => params[:user_id])
+    end    
+
     if params[:sorting]
       if params[:sorting] == "latest"
         @articles = @articles.order("updated_at DESC")
       elsif params[:sorting] == "best"
         @articles = @articles.order("average_score DESC")
       end
-    end
-    if params[:user_id]
-      @articles = @articles.where(:user_id => params[:user_id])
-    end
+    end    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -109,4 +113,3 @@ class ArticlesController < ApplicationController
 
 
 end
-

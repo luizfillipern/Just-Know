@@ -13,7 +13,10 @@ Justknow::Application.routes.draw do
   
   resources :ratings
 
-  resources :categories
+  resources :categories do
+    resources :articles
+  end
+  
 
 
   resources :articles

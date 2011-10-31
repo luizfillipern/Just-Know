@@ -1474,3 +1474,17 @@ input, textarea { color: #828080; }
     margin-right: 1em; }
   .pagination .next_page {
     margin-left: 1em; }
+
+
+.search-field{
+	border-radius: 4px 4px 4px 4px;
+    margin-bottom: 8px;
+    opacity: 1 !important;
+    padding: 9px 7px 10px;
+    width: 296px;
+    background-color: #FFF;
+    color: #728080;
+    float:left;
+    margin: -0.5em 10em 0 2em;
+
+}    
