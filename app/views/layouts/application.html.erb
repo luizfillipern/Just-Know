@@ -34,7 +34,15 @@
     <%end%> </li>
       <li><%=link_to "Home", root_path%></li>
       <li><%=link_to "Artigos", articles_path%>
-      
+      <li>
+        <%=link_to "Categorias", categories_path%>
+        <ul>
+          <%@categories.each do |category|%>
+            <li>
+              <%= link_to category.name, category %>
+            </li>
+          <%end%>
+        </ul>
       </li>
       
       <%if current_user%>
