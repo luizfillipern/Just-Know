@@ -3,3 +3,9 @@ log/*.log
 tmp/
 .sass-cache/
 .idea/
+*.log
+doc/
+*.swp
+*~
+.project
+.DS_Store
