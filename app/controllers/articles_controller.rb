@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 # GET /articles
 # GET /articles.json
   def index
-    @articles = Article.paginate(:page => params[:page], :per_page => 9)
+    @articles = Article.paginate(:page => params[:page], :per_page => 1)
     if params[:sorting]
       if params[:sorting] == "latest"
         @articles = @articles.order("updated_at DESC")
@@ -109,4 +109,3 @@ class ArticlesController < ApplicationController
 
 
 end
-
