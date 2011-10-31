@@ -1,4 +1,6 @@
 Justknow::Application.routes.draw do
+  resources :reports
+
   get "tags/index"
 
   get "home/index"

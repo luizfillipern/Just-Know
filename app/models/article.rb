@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :dependent => :delete_all
   has_many :ratings, :dependent => :delete_all
+  has_many :reports
 
   validates_associated :category, :user
   validates :title, :presence=> true

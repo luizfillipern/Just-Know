@@ -78,7 +78,6 @@
     </div><!-- end #main -->
 
     <div id="sidebar">
-
       <div class="widget">
         <h4 class="widget-title">Nota do tutorial</h4>
         <div id="total_score"></div>
@@ -98,6 +97,17 @@
         <%end%>
         </p>
       </div><!-- end .widget -->
+	<% if current_user %>
+		<div class="widget">
+			 <p>Este tutorial possui material ofensivo?</p>
+			 <%= link_to 'Denuncie este artigo aqui', new_report_path( :article_id => @article.id) %>
+     	 </div>
+	<% else %>
+		<div class="widget">
+			 <p>Este tutorial possui material ofensivo?</p>
+			 <p>Faça <%= link_to "o login", login_path(:return_to_url => article_path(@article))%> para efetuar a denúncia</p>			 
+		</div>
+	<%end%>		
 
       <div class="widget">
         <h4 class="widget-title">Categorias</h4>

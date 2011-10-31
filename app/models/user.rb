@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
   has_many :ratings
+  has_many :reports		
 
   attr_accessible :name, :email, :password
 
