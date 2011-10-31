@@ -2,64 +2,62 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>JustKnow</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
+<title>JustKnow</title>
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tag %>
 
-  <!--[if lte IE 6]>
-    <link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
-  <![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
+<![endif]-->
 
 </head>
 <body>
 
 <div id="header">
 
-  <div class="container">
-    
-      <%=link_to "JustKnow", root_path, :id => "logo"%>
+<div class="container">
 
-    <ul id="nav">
-    <li>
-    <%= form_tag articles_path, :method => :get do%>
-      <%= text_field_tag :search, "",
-        :placeholder => "Busca por artigos ou categorias",
-        :size => 35,
-        :type => "search",
-        :class => "search-field"%>
-    <%end%> </li>
-      <li><%=link_to "Home", root_path%></li>
-      <li><%=link_to "Artigos", articles_path%>
-      <li>
-        <%=link_to "Categorias", categories_path%>
-        <ul>
-          <%@categories.each do |category|%>
-            <li>
-              <%= link_to category.name, category %>
-            </li>
-          <%end%>
-        </ul>
-      </li>
-      
-      <%if current_user%>
-        <li>
-          <%=link_to "Meus Artigos", user_articles_path(current_user)%>
-          <ul>
-                <li><%= link_to 'Novo Artigo', new_article_path %></li>
-          </ul>
-        </li>
-      <%else%>
-        <li class="login">
-          <%=link_to "Login", login_path%>
-        </li>
-      <%end%>
-    </ul>
+<%=link_to "JustKnow", root_path, :id => "logo"%>
 
-  </div><!-- end .container -->
+<ul id="nav">
+<li>
+<%= form_tag articles_path, :method => :get do%>
+<%= text_field_tag :search, "",
+:placeholder => "Faça sua busca",
+:size => 35,
+:type => "search",
+:class => "search-field"%>
+<%end%> </li>
+<li><%=link_to "Home", root_path%></li>
+<li><%=link_to "Artigos", articles_path%>
+<ul>
+<%@categories.each do |category|%>
+<li>
+<%= link_to category.name, category_articles_path(category) %>
+</li>
+<%end%>
+</ul>
+
+</li>
+<%if current_user%>
+<li>
+<%=link_to "Meus Artigos", user_articles_path(current_user)%>
+<ul>
+<li><%= link_to 'Novo Artigo', new_article_path %></li>
+</ul>
+</li>
+<%else%>
+<li class="login">
+<%=link_to "Login", login_path%>
+</li>
+<%end%>
+</ul>
+
+</div><!-- end .container -->
 
 </div><!-- end #header -->
 
@@ -67,26 +65,26 @@
 
 <div id="content">
 
-  <%=render "/utils/flash_messages"%>
+<%=render "/utils/flash_messages"%>
 
-  <%=yield%>
+<%=yield%>
 
 </div><!-- end #content -->
 <div class="clear"></div>
 <div id="footer">
 
-  <div class="container">
+<div class="container">
 
-    <p class="align-left">&copy; 2011, Just Know. Todos os direitos reservados. Layout desenvolvido por <a href="http://themeforest.net/user/Smuliii/profile/?ref=smuliii">Smulii</a>.</p>
+<p class="align-left">&copy; 2011, Just Know. Todos os direitos reservados. Layout desenvolvido por <a href="http://themeforest.net/user/Smuliii/profile/?ref=smuliii">Smulii</a>.</p>
 
-    <ul class="social-links align-right">
-      <li class="twitter"><a href="#">Twitter</a></li>
-      <li class="facebook"><a href="#">Facebook</a></li>
+<ul class="social-links align-right">
+<li class="twitter"><a href="#">Twitter</a></li>
+<li class="facebook"><a href="#">Facebook</a></li>
 <!--      <li class="dribbble"><a href="#">Dribbble</a></li>
-      <li class="skype"><a href="#">Skype</a></li> -->
-    </ul>
+<li class="skype"><a href="#">Skype</a></li> -->
+</ul>
 
-  </div><!-- end .container -->
+</div><!-- end .container -->
 
 </div><!-- end #footer -->
 
