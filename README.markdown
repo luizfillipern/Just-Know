@@ -1,3 +1,3 @@
 # JustKnow
 
-Projeto da disciplina [Engenharia de Software], turma 2011.2
+Projeto da disciplina [*Engenharia de Software], turma 2011.2
