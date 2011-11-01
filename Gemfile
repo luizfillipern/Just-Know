@@ -23,7 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :release do
+group :production do
   gem 'pg'
 end
 
