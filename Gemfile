@@ -23,9 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :release do
-  gem 'pg'
-end
+gem 'pg'
 
 gem 'jquery-rails'
 
